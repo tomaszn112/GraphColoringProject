@@ -12,7 +12,7 @@ public class GreedyLF : IColoringAlgorithm
         int[] resultColors = new int[n];
         Array.Fill(resultColors, -1);
 
-        // LF: Sortowanie wierzchołków malejąco po stopniu (ilości sąsiadów)
+        //Sortowanie wierzchołków (wg liczby połączeń)
         var sortedVertices = Enumerable.Range(0, n)
             .OrderByDescending(v => graph.AdjacencyList[v].Count)
             .ToArray();
@@ -40,7 +40,6 @@ public class GreedyLF : IColoringAlgorithm
 
             resultColors[u] = color;
 
-            // Zresetuj dostępność na potrzeby kolejnej iteracji
             Array.Fill(available, true);
         }
 
