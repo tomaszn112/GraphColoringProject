@@ -12,7 +12,6 @@ public class GreedyLF : IColoringAlgorithm
         int[] resultColors = new int[n];
         Array.Fill(resultColors, -1);
 
-        //Sortowanie wierzchołków (wg liczby połączeń)
         var sortedVertices = Enumerable.Range(0, n)
             .OrderByDescending(v => graph.AdjacencyList[v].Count)
             .ToArray();
@@ -22,7 +21,6 @@ public class GreedyLF : IColoringAlgorithm
 
         foreach (int u in sortedVertices)
         {
-            // Zablokuj kolory używane przez pokolorowanych sąsiadów
             foreach (int neighbor in graph.AdjacencyList[u])
             {
                 if (resultColors[neighbor] != -1)
@@ -31,7 +29,6 @@ public class GreedyLF : IColoringAlgorithm
                 }
             }
 
-            // Znajdź pierwszy wolny kolor
             int color;
             for (color = 0; color < n; color++)
             {

@@ -5,13 +5,14 @@ using GraphColoring.Models;
 using GraphColoring.Generators;
 using GraphColoring.Algorithms;
 
-int vertices = 500;
-double density = 0.5;
+string filePath = "instancje.txt";
 
-Console.WriteLine($"Generowanie grafu: {vertices} wierzchołków, gęstość {density}...");
-Graph graph = GraphGenerator.GenerateRandom(vertices, density);
+Console.WriteLine($"Wczytywanie grafu z pliku: {filePath}...");
+Graph graph = GraphReader.ReadFromFile(filePath);
 
+Console.WriteLine($"Wczytano pomyślnie. Liczba wierzchołków: {graph.VerticesCount}");
 Console.WriteLine("Uruchamianie algorytmu LF...");
+
 IColoringAlgorithm solver = new GreedyLF();
 
 Stopwatch sw = Stopwatch.StartNew();
