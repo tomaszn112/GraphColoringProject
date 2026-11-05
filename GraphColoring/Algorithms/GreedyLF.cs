@@ -8,7 +8,7 @@ public class GreedyLF : IColoringAlgorithm
 {
     public int[] ColorGraph(Graph graph)
     {
-        int n = graph.VerticesCount;
+        int n = graph.VerticesCount; 
         int[] resultColors = new int[n];
         Array.Fill(resultColors, -1);
 
